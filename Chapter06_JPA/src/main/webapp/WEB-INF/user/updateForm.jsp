@@ -57,7 +57,7 @@ onclick="location.href='/'" style="cursor: pointer;"/> 회원정보수정 </h3>
 		   </td>
 		</tr>   
 	</table>
-</form>
+	</form>
 </div>
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.1.min.js"></script>
