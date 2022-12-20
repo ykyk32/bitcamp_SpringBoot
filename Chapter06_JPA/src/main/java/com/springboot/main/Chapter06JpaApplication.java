@@ -36,3 +36,18 @@ Optional 클래스란?
 - Optional이란 'null일 수도 있는 객체'를 감싸는 일종의 Wrapper 클래스이다.
 nullpoint exception 방지
 */
+/*
+ 쿼리 메소드
+JPA에서 제공하는 CrudRepository, 또는 JpaRepository를 이용해서 기본적인 CRUD 기능을 수행했다.
+일반적으로 JPA를 이용해서 목록 기능을 구현할 때는 JPQL(Java Persistence Query Language)을 이용하면 된다. 
+JPQL은 검색 대상이 테이블이 아닌 엔티티 라는 것만 제외하고는 기본 구조와 문법이 기존의 SQL과 유사하다.
+
+스프링 JPA에서는 복잡한 JPQL을 대신해서 처리할 수 있는 쿼리 메소드라는 기능을 제공한다.
+쿼리 메소드는 메소드의 이름으로 필요한 쿼리를 만들어주는 기능이다.
+
+쿼리 메소드를 작성할 때 엔티티 이름은 생략할 수 있다.
+현재 사용하는 Repository 인터페이스에서 선언된 타입 정보를 기준으로 자동 엔티티 이름이 적용된다.
+
+쿼리 메소드의 리턴 타입은 Page<T>, Slice<T>, List<T> 이며 모두 Collection<T> 타입이다.
+이 중에서 가장 많이 사용하는 것은 Page<T>, List<T>로서, 단순히 목록을 검색하려면 List<T>를 사용하고 페이징 처리를 하려면 Page<T>를 사용하면 된다.
+ */

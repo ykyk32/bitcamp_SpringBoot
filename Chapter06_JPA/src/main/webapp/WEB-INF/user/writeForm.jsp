@@ -18,7 +18,7 @@
 
 <h3>
 	<img src="../image/qq.png" width="50" height="50" style="cursor: pointer;"
-	onclick="location.href='/chapter06_SpringWebMaven/'"/>회원가입</h3>
+	onclick="location.href='/'"/>회원가입</h3>
 	<!-- onclick="location.href='../'"/>회원가입</h3> -->
 <hr/>
 <form id="writeForm">

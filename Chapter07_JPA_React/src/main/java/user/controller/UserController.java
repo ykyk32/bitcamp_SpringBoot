@@ -6,29 +6,37 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import user.bean.UserDTO;
 import user.service.UserService;
 
-@Controller
+@CrossOrigin
+@RestController
 @RequestMapping(value="user")
 public class UserController {
 	@Autowired
 	private UserService userService;
+	
+	@GetMapping(value="getUserList")	
+	public List<UserDTO> getUserList(){
+		//DB연결가능하지만 비추
+		return userService.getUserList();
+	}
+	/*	
 	
 	@GetMapping(value ="/writeForm")
 	public String writeForm() {
 		return"/user/writeForm";
 	}
 		
-	@PostMapping(value="write")
-	@ResponseBody//void니까-dispatch로 가지마-비동기처리
+	@PostMapping(value="write")	
 	public void write(@ModelAttribute UserDTO userDTO) {
 		userService.write(userDTO);		
 	}
@@ -36,14 +44,12 @@ public class UserController {
 	public String list() {
 		return "user/list";
 	}
-	@PostMapping(value="getUserList")
-	@ResponseBody//알아서 json타입으로 바꿔줌
+	@PostMapping(value="getUserList")	
 	public List<UserDTO> getUserList(){
 		//DB연결가능하지만 비추
 		return userService.getUserList();
 	}
-	@PostMapping(value="isExistId")
-	@ResponseBody
+	@PostMapping(value="isExistId")	
 	public String isExistId(@RequestParam String id) {
 		return userService.isExistId(id);
 	}
@@ -52,13 +58,11 @@ public class UserController {
 		return "user/updateForm";
 	}
 	
-	@PostMapping(value="getUser")
-	@ResponseBody
+	@PostMapping(value="getUser")	
 	public Optional<UserDTO>  getUser(@RequestParam String id) {
 		return userService.getUser(id);
 	}
-	@PostMapping(value="update")
-	@ResponseBody//void니까-dispatch로 가지마-비동기처리
+	@PostMapping(value="update")	
 	public void update(@ModelAttribute UserDTO userDTO) {
 		userService.update(userDTO);		
 	}
@@ -66,14 +70,13 @@ public class UserController {
 	public String deleteForm() {
 		return "user/deleteForm";
 	}
-	@PostMapping(value="delete")
-	@ResponseBody//void니까-dispatch로 가지마-비동기처리
+	@PostMapping(value="delete")	
 	public void delete(@RequestParam String id) {
 		userService.delete(id);		
 	}
-	@PostMapping(value="search")
-	@ResponseBody
+	@PostMapping(value="search")	
 	public List<UserDTO> search(@RequestParam Map<String,String> map) {//searchOption, keyword
 		return userService.search(map);
 	}
+	*/
 }
