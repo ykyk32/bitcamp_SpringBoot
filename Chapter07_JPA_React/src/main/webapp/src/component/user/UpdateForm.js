@@ -19,12 +19,13 @@ const UpdateForm = () => {
     const onSearch =() => {
        axios
             .get(`http://localhost:8080/user/getUser?id=${searchId}`)
-            .then((res)=> {
+            .then(res=> 
                 res.data===null ?
-                    setSearchId('') || setResult('찾는아이디없다') || setShow(true) // ||- 연결연산자
+                    (setSearchId(''), setResult('찾는아이디없다'), setShow(true))//(,)- ,로 연결
+                    //setSearchId('') || setResult('찾는아이디없다') || setShow(true) // ||- 연결연산자
                     :
                     setForm(res.data) || setResult('') || setShow(false)     
-            })   
+            )   
             .catch(error => console.log(error)); 
     }
 
@@ -53,7 +54,7 @@ const UpdateForm = () => {
         }
 
         if(sw === 1){
-            axios.post('http://localhost:8080/user/update', null, {params:form})
+            axios.put('http://localhost:8080/user/update', null, {params:form})
                  .then(() =>{
                     alert("수정완료.");
                     navigate("/user/list");
@@ -63,6 +64,12 @@ const UpdateForm = () => {
     }
 
     const navigate = useNavigate()
+
+    const onReset = (e) => {
+        e.preventDefault()
+        onSearch()     
+
+    }
 
     return (
         <>
@@ -86,7 +93,7 @@ const UpdateForm = () => {
 
         
         <div id='updateDiv' hidden = { show }>
-            <form className={styles.updateForm} onSubmit={ onUpdateSubmit }>
+            <form className={styles.updateForm} >
             <table>
                     <tbody>
                         <tr>
@@ -112,8 +119,8 @@ const UpdateForm = () => {
                         </tr>
                         <tr>
                             <td colSpan='2' align='center'>
-                                <button>등록</button>
-                                <button>취소</button>
+                                <button onClick={ onUpdateSubmit }>수정</button>
+                                <button onClick={ onReset }>취소</button>
                             </td>
 
                         </tr>

@@ -4,6 +4,7 @@ import Index from './component/main/Index';
 import DeleteForm from './component/user/DeleteForm';
 import List from './component/user/List';
 import UpdateForm from './component/user/UpdateForm';
+import UploadForm from './component/user/UploadForm';
 import WriteForm from './component/user/WriteForm';
 
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
             <Route path="/user/list" element={ <List /> } />  
             <Route path="/user/updateForm" element={<UpdateForm /> }/>  
             <Route path="/user/deleteForm" element={<DeleteForm />} />
-           
+            <Route path="/user/uploadForm" element={<UploadForm />} /> 
          
             </Routes>
         </>
@@ -28,3 +29,13 @@ const App = () => {
 };
 
 export default App;
+
+/*
+Rest API				                 axios
+				                         =>axios의 request method
+
+POST : 데이터 등록 및 전송 		      axios.post()
+GET : 데이터 조회 			            axios.get()
+PUT : 데이터 수정			              axios.put()  
+DELETE : 데어터 삭제		            axios.delete()
+*/

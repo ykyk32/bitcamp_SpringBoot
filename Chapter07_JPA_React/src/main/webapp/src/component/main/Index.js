@@ -33,11 +33,9 @@ export default Index;
             <p><Link to="/user/list">출력</Link></p>   
             <p><Link to="/user/updateForm">수정</Link></p>
             <p><Link to="/user/deleteForm">삭제</Link></p>
+            <p><Link to="/user/uploadForm">업로드</Link></p>
         </div>
-              // <p><Link to="/user/uploadForm">파일 등록</Link></p> 
-             
-            // <Route path="/user/uploadForm" element={<UploadForm />} /> 
-       
+         
     );
 };
 

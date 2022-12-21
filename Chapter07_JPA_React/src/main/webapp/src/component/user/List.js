@@ -2,7 +2,10 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 const List = () => {
-    const [list, setList] = useState([]);
+    const [list, setList] = useState([]); 
+    const  [searchOption, setSearchOption] = useState('name')
+    const [keyword, setKeyword] = useState('')
+    
 
     useEffect(() => {
         axios.get('http://localhost:8080/user/getUserList')//포트 다르니가 풀주소
@@ -12,6 +15,20 @@ const List = () => {
 
 
     }, []);
+
+    const onSearch = (e) => {
+        e.preventDefault()
+        axios
+            .get('http://localhost:8080/user/search',{ 
+                params: {
+                    searchOption : searchOption,
+                    keyword: keyword
+                }
+            })
+            .then(res=> setList(res.data))               
+            .catch(error => console.log(error));     
+    }
+
     return (
         <div>
             <table border="1" >
@@ -38,6 +55,18 @@ const List = () => {
                 </tbody>
         
             </table>
+            
+            <div style={{ width: '450px', textAlign: 'center', margin: '30px'}}>
+                <form id="searchForm">
+                    <select name='searchOption' onChange ={e => setSearchOption(e.target.value)}>
+                        <option value='name'>이름</option>
+                        <option  value='id'>아이디</option>
+                    </select> &nbsp;
+                    <input type='text' id='keyword' value={ keyword } onChange={ e => setKeyword(e.target.value)} /> &nbsp;
+                    <button onClick={ onSearch }>검색</button>
+                </form>
+            </div>
+
         </div>
     );
 };

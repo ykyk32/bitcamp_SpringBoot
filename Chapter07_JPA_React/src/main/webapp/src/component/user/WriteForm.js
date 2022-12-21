@@ -25,7 +25,7 @@ const WriteForm = () => {
         })
     }
 
-    const writeSubmit = (e) => {
+    const onWriteSubmit = (e) => {
         e.preventDefault()//일단 submit막기
 
         var sw=1;
@@ -46,37 +46,38 @@ const WriteForm = () => {
 
         
         
-        //[방법1] (userController 바꿔야한다)
-        /*
-         if(sw === 1){
-            axios.post('http://localhost:8080/user/write',{
-                id: id,
-                name: name,
-                pwd: pwd
-            })
-                 .then(() =>{
-                    alert("회원가입을 축하합니다.");
-                    navigate("/user/list");
-                 })
-                 .catch(error => console.log(error))
-        }
-        */
+        //[방법1] (userController 바꿔야한다)        
+        //  if(sw === 1){
+        //     axios.post('http://localhost:8080/user/write', null,{
+        //        params: {
+        //             id: id,
+        //             name: name,
+        //             pwd: pwd
+        //         }
+        //     })
+        //          .then(() =>{
+        //             alert("회원가입을 축하합니다.");
+        //             navigate("/user/list");
+        //          })
+        //          .catch(error => console.log(error))
+        // }
+        
 
        
-        /*
+        
        //[방법2]
-       if (sw === 1) {
-           axios.post(
-                   "http://localhost:8080/user/write",
-                   "name=" + name + "&id=" + id + "&pwd=" + pwd
-               )
-               .then(() => {
-                   alert("회원가입 완료");
-                   navigate("/user/list");
-               })
-               .catch((error) => console.log(error));
-       }
-       */
+    //    if (sw === 1) {
+    //        axios.post(
+    //                "http://localhost:8080/user/write",
+    //                "name=" + name + "&id=" + id + "&pwd=" + pwd
+    //            )
+    //            .then(() => {
+    //                alert("회원가입 완료");
+    //                navigate("/user/list");
+    //            })
+    //            .catch((error) => console.log(error));
+    //    }
+       
        
 
         
@@ -89,8 +90,16 @@ const WriteForm = () => {
                  })
                  .catch(error => console.log(error))
         }
-
+        
     }
+
+    const onReset = () => {
+        setForm({
+            name: '',
+            id: '',
+            pwd: ''
+        })
+    } 
 
 
 
@@ -117,7 +126,7 @@ const WriteForm = () => {
                 회원가입
             </h1>
             <hr/>
-            <form className={ styles.writeForm } onSubmit={ writeSubmit }>
+            <form className={ styles.writeForm } >
                 <table>
                     <tbody>
                         <tr>
@@ -143,8 +152,8 @@ const WriteForm = () => {
                         </tr>
                         <tr>
                             <td colSpan='2' align='center'>
-                                <button>등록</button>
-                                <button>취소</button>
+                                <button onClick={ onWriteSubmit }>등록</button>
+                                <button onClick={ onReset }>취소</button>
                             </td>
 
                         </tr>

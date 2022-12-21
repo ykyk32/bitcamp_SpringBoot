@@ -16,7 +16,7 @@ const DeleteForm = () => {
                      setSearchId('') || setResult('찾는아이디없다') // ||- 연결연산자
                      :
                      axios
-                        .get(`http://localhost:8080/user/delete?id=${searchId}`)
+                        .delete(`http://localhost:8080/user/delete?id=${searchId}`)
                         .then(() => {
                             setResult('')
                             alert("삭제완료")
